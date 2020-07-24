@@ -4,7 +4,7 @@ namespace ChessEngine
 {
 	public class Bishop : Piece
 	{
-		public Bishop()
+		public Bishop(Colour inColour) : base (inColour)
 		{
 		}
 	}

@@ -4,7 +4,7 @@ namespace ChessEngine
 {
 	public class Knight : Piece
 	{
-		public Knight()
+		public Knight(Colour inColour) : base(inColour)
 		{
 		}
 	}

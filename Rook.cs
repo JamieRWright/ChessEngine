@@ -4,7 +4,7 @@ namespace ChessEngine
 {
 	public class Rook : Piece
 	{
-		public Rook()
+		public Rook(Colour inColour) : base(inColour)
 		{
 		}
 	}

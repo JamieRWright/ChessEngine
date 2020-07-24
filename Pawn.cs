@@ -4,7 +4,7 @@ namespace ChessEngine
 {
 	public class Pawn : Piece
 	{
-		public Pawn()
+		public Pawn(Colour inColour) : base (inColour)
 		{
 		}
 	}

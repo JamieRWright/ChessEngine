@@ -6,6 +6,7 @@ namespace ChessEngine
 	{
 		public Chess()
 		{
+
 		}
 	}
 }
