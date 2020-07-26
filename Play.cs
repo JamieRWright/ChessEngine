@@ -8,10 +8,8 @@ namespace ChessEngine
 	{
 		static void Main(string[] args)
 		{
-			Regex notation = new Regex("(K|Q|B|N|R)?[a-h]?[1-8]?(x)?[a-h][1-8]");
-			Console.WriteLine(notation.IsMatch("Rdf8"));
-			//Board gameBoard = new Board();
-			//drawBoard(gameBoard);
+			Board gameBoard = new Board();
+			drawBoard(gameBoard);
 		}
 		static void drawBoard(Board inBoard)
 		{

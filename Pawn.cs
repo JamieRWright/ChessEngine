@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace ChessEngine
 {
@@ -12,6 +12,7 @@ namespace ChessEngine
 			_startSquare = inSquare;
 			Square = inSquare;
 			Names = default;
+			Value = 1;
 		}
 		public bool hasDoublePushed
 		{

@@ -8,7 +8,7 @@ public class Notation
 	}
 	public bool isValid(string inMove)
     {
-		Regex notation = new Regex("(K|Q|B|N|R)?[a-h][1-8]");
-
+		Regex notation = new Regex("(K|Q|B|N|R)?[a-h]?[1-8]?(x)?[a-h][1-8]");
+		return notation.IsMatch(inMove);
 	}
 }

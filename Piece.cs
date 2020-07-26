@@ -47,6 +47,11 @@ namespace ChessEngine
 			get { return _square; }
 			set { _square = value; }
 		}
+		public int Value 
+		{
+			get {return _value;}
+			set {_value = value; }
+		}
 		public char getFile
 		{
 			get { return _square[0]; }
