@@ -1,26 +1,26 @@
 ﻿ using System;
+using System.Drawing;
 
 namespace ChessEngine
 {
 	public class Pawn : Piece
 	{
 		private bool _doublePush;
-		private string _startSquare, _currentSquare;
-		public Pawn(Colour inColour, string inSquare) : base(inColour, inSquare)
+		private Square _startSquare, _currentSquare;
+		public Pawn(Colour inColour, Square inSquare) : base(inColour, inSquare)
 		{
 			_doublePush = true;
 			_startSquare = inSquare;
-			Square = inSquare;
-			Names = default;
+			Name = default;
 			Value = 1;
 		}
 		public bool hasDoublePushed
 		{
 			get { return _doublePush; }
 		}
-        public override void Move(string inSquare, ref Board inBoard)
+        public override void Move(Square inSquare, ref Board inBoard)
         {
-            int nextRank = int.Parse(inSquare[1].ToString());
+            int nextRank = inSquare.Rank;
 			int currentRank = getRank;
 			int moveLength = Math.Abs(nextRank - currentRank);
 			//switch (moveLength)

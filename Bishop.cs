@@ -4,12 +4,12 @@ namespace ChessEngine
 {
 	public class Bishop : Piece
 	{
-		public Bishop(Colour inColour, string inSquare) : base(inColour, inSquare)
+		public Bishop(Colour inColour, Square inSquare) : base(inColour, inSquare)
 		{
-			Names = 'B';
+			Name = 'B';
 			Value = 3;
 		}
-		public override void Move(string Square, ref Board inBoard)
+		public override void Move(Square Square, ref Board inBoard)
 		{
 			throw new NotImplementedException();
 		}

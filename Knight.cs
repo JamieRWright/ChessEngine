@@ -4,12 +4,13 @@ namespace ChessEngine
 {
 	public class Knight : Piece
 	{
-		public Knight(Colour inColour, string inSquare) : base(inColour, inSquare)
+		public Knight(Colour inColour, Square inSquare) : base(inColour, inSquare)
 		{
-			Names = 'N';
+			Name = 'N';
 			Value = 3;
 		}
-		public override void Move(string Square, ref Board inBoard)
+
+		public override void Move(Square Square, ref Board inBoard)
 		{
 			throw new NotImplementedException();
 		}

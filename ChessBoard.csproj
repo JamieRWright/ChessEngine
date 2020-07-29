@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{B13B8AAD-2C46-42E3-A416-F230C282336C}</ProjectGuid>
+    <ProjectGuid>{7F1F8B22-5738-4122-906B-11FD6470A8D2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>WindowsApplication</AssemblyName>
@@ -30,7 +30,7 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>ChessInterface</RootNamespace>
+    <RootNamespace>ChessBoard</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +60,18 @@
     <Content Include="packages\System.ValueTuple.4.5.0\THIRD-PARTY-NOTICES.TXT" />
     <Content Include="packages\System.ValueTuple.4.5.0\useSharedDesignerContext.txt" />
     <Content Include="packages\System.ValueTuple.4.5.0\version.txt" />
+    <Content Include="pictures\BlackBishop.jpg" />
+    <Content Include="pictures\BlackKing.jpg" />
+    <Content Include="pictures\BlackKnight.jpg" />
+    <Content Include="pictures\BlackPawn.jpg" />
+    <Content Include="pictures\BlackQueen.jpg" />
+    <Content Include="pictures\BlackRook.jpg" />
+    <Content Include="pictures\WhiteBishop.jpg" />
+    <Content Include="pictures\WhiteKing.jpg" />
+    <Content Include="pictures\WhiteKnight.jpg" />
+    <Content Include="pictures\WhitePawn.jpg" />
+    <Content Include="pictures\WhiteQueen.jpg" />
+    <Content Include="pictures\WhiteRook.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".git\ChessBoard.cs">
@@ -73,12 +85,13 @@
     <Compile Include="Chess.cs" />
     <Compile Include="King.cs" />
     <Compile Include="Knight.cs" />
+    <Compile Include="Notation.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="Play.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Queen.cs" />
     <Compile Include="Rook.cs" />
-    <Compile Include="Square.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".git\COMMIT_EDITMSG" />
@@ -104,32 +117,59 @@
     <None Include=".git\logs\refs\remotes\origin\master" />
     <None Include=".git\objects\04\09b1360f686ebf63e983928b222ceb013f6486" />
     <None Include=".git\objects\04\168e4d9848679d1df97cdc304dcd7e92ae9717" />
+    <None Include=".git\objects\09\311229f23111a87d8906778f4fbfcb66640b6a" />
+    <None Include=".git\objects\0c\b4abc3e1f126d0f37cd69039927705955f7f49" />
     <None Include=".git\objects\0f\886a68b6d99e11d6ab6ff1d9b5f399f029add5" />
+    <None Include=".git\objects\15\916c5175e64d043e64638c4ea0862a8427a7b0" />
     <None Include=".git\objects\16\4d8b7e4012691634336e23e316b3645e2d6ff5" />
+    <None Include=".git\objects\1a\8fdd724e3816389d8fe085866eeb131e1e4ca5" />
+    <None Include=".git\objects\1f\d0f862b4564b89f688f685293a9a22abe48f83" />
+    <None Include=".git\objects\23\3125370080671f07b9ad802300461d62500b51" />
     <None Include=".git\objects\26\bdc7aded71a4431e0fc86f2a74113d59f7aa90" />
     <None Include=".git\objects\29\99a966a70c6815dee3004f584511cdec52b755" />
     <None Include=".git\objects\2d\41e6a49481b8e01945294b35b7067b0bf49de3" />
     <None Include=".git\objects\30\61de638cdef793ae9ac0ac3eeab597d6104183" />
+    <None Include=".git\objects\31\c6574dcb371577b9afbca2fb1982c5b2833893" />
     <None Include=".git\objects\34\4a28c34df298f4374e4a69d12de99dc32fe28c" />
     <None Include=".git\objects\3a\a7bd95cc93a096e0811b34ce4b5f54feb930bc" />
     <None Include=".git\objects\3b\28f6d8275f00d165704389dbaf1d470e2498c4" />
+    <None Include=".git\objects\44\bfd957188b4b7f7857c63374f133b24f1f0e82" />
+    <None Include=".git\objects\55\3f206cd089558e898a8c4cbd3a54607e797053" />
     <None Include=".git\objects\56\fc608e947fb0c929e382f33f0764ad8b590019" />
     <None Include=".git\objects\5e\4d8722643b07cbbb4ccef809ed825e814f5c40" />
+    <None Include=".git\objects\65\fae36ffe098b5021a5d9e8e22be2c159c6a073" />
     <None Include=".git\objects\6a\829132beec99cd8a3b61e028cb54bddd69e4d5" />
     <None Include=".git\objects\6a\fd479cffa19cc9f1d8a8bead13fc54f0cf83ba" />
     <None Include=".git\objects\6d\e4fc6fbc6f9db171981e4f709b619181cb701d" />
+    <None Include=".git\objects\6e\cf100fc2c3bd7f2d9daf5ca13759c38dd62f15" />
     <None Include=".git\objects\72\751bc35ce41b5a8edc7382ac82f0e6a4069458" />
+    <None Include=".git\objects\75\447f196759b55ca073ba628549ee62a25c70ed" />
+    <None Include=".git\objects\77\901283a5eec38ff2c57b1e047c13f4df7e3f0a" />
     <None Include=".git\objects\79\d850b1e5954a62c8c5431581e9b01ee1515252" />
     <None Include=".git\objects\7a\f3ca2eaced9238a9b25c6c3d5509bd740fa457" />
     <None Include=".git\objects\84\7e71ce42f879cc9e87d813481936d7e3b5959f" />
+    <None Include=".git\objects\85\e860aa5d397af76368b9078c146636b1ad7fe8" />
+    <None Include=".git\objects\8a\4cf58f2b980374bb81ddf3cf2258c6eaeb51fb" />
+    <None Include=".git\objects\a5\ab6f4eb5591c750ca47383ef0689aafbb1c7e2" />
     <None Include=".git\objects\ac\b2e7c7c2a64a4c25531fca9061bbf0640baeb7" />
+    <None Include=".git\objects\ad\7937de1d3dc9e4b2face6cfabfe35a7b1f8879" />
+    <None Include=".git\objects\af\5f7f1b1c542e7677e81a2080de77c7a98b6b4f" />
     <None Include=".git\objects\b8\c10fa683991b0b4d74f048523c415590c5e47e" />
     <None Include=".git\objects\c7\699f67b65b3a64fc5c0fa7004bd716b3a07825" />
+    <None Include=".git\objects\c7\a1a2df0ea4271f29a6c52eac1bd04bace90e07" />
     <None Include=".git\objects\ca\41131f7390055269c794ea7f419f94ebf0fd23" />
     <None Include=".git\objects\cc\3f99f4a850e1cf3ef4a1805012674f695d636e" />
     <None Include=".git\objects\cc\5341dad1fcd8d689349bf5864b3b414c8d13a5" />
+    <None Include=".git\objects\cf\12d13c90b961918e27bb779db3a6c430e82cfa" />
+    <None Include=".git\objects\d0\a9d35705fd5efcaa82363ea7ed53a5df013bf2" />
     <None Include=".git\objects\d1\59169d1050894d3ea3b98e1c965c4058208fe1" />
+    <None Include=".git\objects\d2\563629a55ef1f6ad855b309181fb2fabdf75c6" />
+    <None Include=".git\objects\d4\747730aee01ce128b4449970d6c84c2ac70262" />
+    <None Include=".git\objects\d9\cf725fdd001e315dbea6f812a18caa8e8723d8" />
     <None Include=".git\objects\df\cfd56f444f9ae40e1082c07fe254cc547136cf" />
+    <None Include=".git\objects\e1\41d4438a7f98162a36acbeb4c1125c69de3cd4" />
+    <None Include=".git\objects\e6\2ac956898e53426f315c4a8305ce2c164fdd99" />
+    <None Include=".git\objects\ee\ad98484b54510d9616e14827e012f5261992dc" />
     <None Include=".git\objects\f0\9e878bd27504a7fb4391383d5c5b957c57a824" />
     <None Include=".git\objects\f1\064a64cc09363fd1579ca4685d1b534d359ecf" />
     <None Include=".git\objects\f4\f8a3b63931fd99bd1a5a36a9db298a7346f2fb" />
@@ -140,6 +180,9 @@
     <None Include=".git\refs\remotes\origin\HEAD" />
     <None Include=".git\refs\remotes\origin\master" />
     <None Include=".vs\ChessEngine\v16\.suo" />
+    <None Include=".vs\ChessInterface\v16\.suo" />
+    <None Include=".vs\ChessInterface\v16\Server\sqlite3\db.lock" />
+    <None Include=".vs\ChessInterface\v16\Server\sqlite3\storage.ide" />
     <None Include=".vs\Play\v16\.suo" />
     <None Include=".vs\Play\v16\Server\sqlite3\db.lock" />
     <None Include=".vs\Play\v16\Server\sqlite3\storage.ide" />
@@ -170,15 +213,15 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include=".git\objects\info\" />
-    <Folder Include=".git\objects\pack\" />
-    <Folder Include=".git\refs\tags\" />
-    <Folder Include=".vs\ChessInterface\v16\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include=".git\ChessBoard.resx">
       <DependentUpon>ChessBoard.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
+    <Folder Include=".vs\ChessBoard\v16\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
