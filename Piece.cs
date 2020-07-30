@@ -91,9 +91,22 @@ namespace ChessEngine
 		public static ulong generatePositionalBitboard(Square inSquare)
 		{
 			ulong output = 0;
-			int index = (8 * inSquare.Rank) + (int)inSquare.File;
+			int index = (8 * (inSquare.Rank-1)) + (int)inSquare.File;
 			output = (ulong)Math.Pow(2, index);
 			return output;
+		}
+		public static string ulongToBinary(ulong value)
+		{
+			string output = "0";
+			if (value == 0)
+				return output;
+			System.Text.StringBuilder b = new System.Text.StringBuilder();
+			while (value != 0)
+			{
+				b.Insert(0, ((value & 1) == 1) ? '1' : '0');
+				value >>= 1;
+			}
+			return b.ToString();
 		}
 	}
 }
