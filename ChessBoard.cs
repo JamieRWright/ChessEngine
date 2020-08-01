@@ -13,7 +13,6 @@ namespace ChessEngine
 {
     public partial class ChessBoard : Form
     {
-        public Board _currentBoard;
         public string conString = "Data Source=DESKTOP-MRJEJE6\\SQLEXPRESS;Initial Catalog=ConnectionDb;Integrated Security=True";
 
         public ChessBoard()
@@ -23,8 +22,7 @@ namespace ChessEngine
 
         private void ChessBoard_Load(object sender, EventArgs e)
         {
-            ulong bitboard = Piece.generatePositionalBitboard(new Square('H', 8));
-            _currentBoard = new Board();
+            ulong bitboard = Piece.makeBitboard(new Square('H', 8));
             
             label1.Text = Piece.ulongToBinary(bitboard);
 
@@ -37,7 +35,7 @@ namespace ChessEngine
             {
                 e.Graphics.FillRectangle(Brushes.White, e.CellBounds);
             }
-            Piece thisPiece = _currentBoard.getBoard[e.Column, e.Row].Item2;
+            Piece thisPiece = Board.getBoard[e.Column, e.Row].Piece;
             if (thisPiece != default && thisPiece.Picture != default)
                 e.Graphics.DrawImage(thisPiece.Picture, e.CellBounds);
         }

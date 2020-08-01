@@ -3,21 +3,55 @@ using System.Drawing;
 
 namespace ChessEngine
 {
-    public class Board
+    public static class Board
     {
         //An array of tuples which defines the board, (Key, Value) = (SquareName, PieceOnSquare)
-        private Tuple<string, Piece>[,] _currentBoard;
-        public Board()
+        public static Square[,] BoardState = SetupBoard();
+
+        public static Square[,] getBoard
+        { get { return BoardState; } }
+
+        public static bool isSquareEmpty(string inSquareName)
         {
-            _currentBoard = new Tuple<string, Piece>[8, 8];
-            setupBoard(ref _currentBoard);
+            if (getPiece(inSquareName) == "")
+                return true;
+            else
+                return false;
+        }        
+        public static string getPiece(string inSquareName)
+        {
+            int letter = inSquareName[0] % 65;
+            int number = int.Parse(inSquareName[1].ToString()) - 1;//Minus 1 since C# indexes arrays from 0
+            Piece outPiece = BoardState[letter, number].Piece;
+            if (outPiece == null)
+                return "";
+            return outPiece.ToString();
         }
 
-        private void setupBoard(ref Tuple<string, Piece>[,]  inBoard)
+        public static Square getSquare(string inSquareName)
         {
+            int letter = inSquareName[0] % 65;
+            int number = int.Parse(inSquareName[1].ToString()) - 1;//Minus 1 since C# indexes arrays from 0
+            return BoardState[letter, number];
+        }
+        public static void updatePosition(string move)
+        {
+        }
+        public static void drawBoard()
+        {
+            for (int col = 7; col >= 0; col--)
+            {
+                for (int row = 0; row < 8; row++)
+                    Console.Write(String.Format("{0}\t", BoardState[row, col].Piece));
+                Console.WriteLine();
+            }
+            Console.Read();
+        }
+        private static Square[,] SetupBoard()
+        {
+            Square[,] inBoard = new Square[8, 8];
             char currentLetter;
-            string squareName = "";
-            for(int x = 0; x<8; x++)
+            for (int x = 0; x < 8; x++)
             {
                 for (int y = 0; y < 8; y++)
                 {
@@ -26,66 +60,38 @@ namespace ChessEngine
                     switch (y)
                     {
                         case 0:
-                            backRow(Colour.White, 0, ref inBoard);
+                            backRank(Colour.White, 0, ref inBoard);
                             break;
                         case 1:
-                            inBoard[x, y] = Tuple.Create<string, Piece>(squareName, new Pawn(Colour.White, square));
+                            square.Piece = new Pawn(Colour.White);
+                            inBoard[x, y] = square;
                             break;
                         case 6:
-                            inBoard[x, y] = Tuple.Create<string, Piece>(squareName, new Pawn(Colour.Black, square));
+                            square.Piece = new Pawn(Colour.Black);
+                            inBoard[x, y] = square;
                             break;
                         case 7:
-                            backRow(Colour.Black, 7, ref inBoard);
+                            backRank(Colour.Black, 7, ref inBoard);
                             break;
                         default:
-                            inBoard[x, y] = Tuple.Create<string, Piece>(squareName, null);
+                            inBoard[x, y] = square;
                             break;
                     }
                 }
             }
+            return inBoard;
         }
-        private void backRow(Colour inColour, int y, ref Tuple<string, Piece>[,] inBoard)
+        private static void backRank(Colour inColour, int y, ref Square[,] inBoard)
         {
             //Ew
-            inBoard[0, y] = Tuple.Create<string, Piece>(string.Concat("A", y + 1), new Rook(inColour, new Square('A', y + 1)));
-            inBoard[1, y] = Tuple.Create<string, Piece>(string.Concat("B", y + 1), new Knight(inColour, new Square('B', y + 1)));
-            inBoard[2, y] = Tuple.Create<string, Piece>(string.Concat("C", y + 1), new Bishop(inColour, new Square('C', y + 1)));
-            inBoard[3, y] = Tuple.Create<string, Piece>(string.Concat("D", y + 1), new Queen(inColour, new Square('D', y + 1)));
-            inBoard[4, y] = Tuple.Create<string, Piece>(string.Concat("E", y + 1), new King(inColour, new Square('E', y + 1)));
-            inBoard[5, y] = Tuple.Create<string, Piece>(string.Concat("F", y + 1), new Bishop(inColour, new Square('F', y + 1)));
-            inBoard[6, y] = Tuple.Create<string, Piece>(string.Concat("G", y + 1), new Knight(inColour, new Square('G', y + 1)));
-            inBoard[7, y] = Tuple.Create<string, Piece>(string.Concat("H", y + 1), new Rook(inColour, new Square('H', y + 1)));
-        }
-        public bool isSquareEmpty(string inSquareName)
-        {
-            if (getSquare(inSquareName) == "")
-                return true;
-            else
-                return false;
-        }        
-        public string getSquare(string inSquareName)
-        {
-            int letter = inSquareName[0] % 65;
-            int number = int.Parse(inSquareName[1].ToString()) - 1;//Minus 1 since C# indexes arrays from 0
-            Piece outPiece = _currentBoard[letter, number].Item2;
-            if (outPiece == null)
-                return "";
-            return outPiece.ToString();
-        }
-        public void updatePosition(string move)
-        {
-        }
-        public Tuple<string, Piece>[,] getBoard
-        { get { return _currentBoard;} }
-        public void drawBoard()
-        {
-            for (int col = 7; col >= 0; col--)
-            {
-                for (int row = 0; row < 8; row++)
-                    Console.Write(String.Format("{0}\t", _currentBoard[row, col].Item2));
-                Console.WriteLine();
-            }
-            Console.Read();
+            inBoard[0, y] = new Square('A', y + 1, new Rook(inColour));
+            inBoard[1, y] = new Square('B', y + 1, new Knight(inColour));
+            inBoard[2, y] = new Square('C', y + 1, new Bishop(inColour));
+            inBoard[3, y] = new Square('D', y + 1, new Queen(inColour));
+            inBoard[4, y] = new Square('E', y + 1, new King(inColour));
+            inBoard[5, y] = new Square('F', y + 1, new Bishop(inColour));
+            inBoard[6, y] = new Square('G', y + 1, new Knight(inColour));
+            inBoard[7, y] = new Square('H', y + 1, new Rook(inColour));
         }
     }
 }

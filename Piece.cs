@@ -7,7 +7,7 @@ namespace ChessEngine
 	public enum Colour { White = 0, Black = 1 }
 	abstract public class Piece
 	{
-		private readonly Colour _colour;
+		private Colour _colour;
 		private int _value;
 		private Square _square;
 		private char _name;
@@ -27,9 +27,20 @@ namespace ChessEngine
 				Picture = new Bitmap(FileName);
 			Picture.MakeTransparent(Color.White);
 		}
+		public Piece(Colour inColour)
+		{
+			_root = @"C:\\Users\\piano\\Documents\\ChessEngine\\pictures\\";
+			_colour = inColour;
+			if (inColour == Colour.Black)
+				Picture = new Bitmap(FileName);
+			else
+				Picture = new Bitmap(FileName);
+			Picture.MakeTransparent(Color.White);
+		}
 
 		//something to do with bit boards and dbs
-		public abstract void Move(Square Square, ref Board inBoard);
+		public abstract void Move(Square Square);
+		public abstract ulong pieceBitboard();
 		public override string ToString()
 		{
 			string col = "";
@@ -46,12 +57,13 @@ namespace ChessEngine
 				if (this == null)
 					return "";
 				else
-					return string.Concat(_root, this.getColour, this.GetType().Name,".jpg");
+					return string.Concat(_root, this.Colour, this.GetType().Name,".jpg");
 			}
 		}
-		public Colour getColour
+		public Colour Colour
 		{
 			get { return _colour; }
+			set { _colour = value; }
 		}
 		public Square Square
 		{
@@ -65,7 +77,7 @@ namespace ChessEngine
 		}
 		public char getFile
 		{
-			get { return (char) _square.File; }
+			get { return  _square.File; }
 		}
 		public int getRank
 		{
@@ -88,10 +100,22 @@ namespace ChessEngine
 			output = (ulong) Math.Pow(2, index);
 			return output;
 		}
-		public static ulong generatePositionalBitboard(Square inSquare)
+		public static ulong makeBitboard(Square inSquare)
 		{
 			ulong output = 0;
 			int index = (8 * (inSquare.Rank-1)) + (int)inSquare.File;
+			output = (ulong)Math.Pow(2, index);
+			return output;
+		}
+		public static ulong makeBitboard(string thisstring)
+		{
+			Square square = null;
+			//makeBitboard();
+		}
+		public static ulong makeBitboard(Square inSquare)
+		{
+			ulong output = 0;
+			int index = (8 * (inSquare.Rank - 1)) + (int)inSquare.File;
 			output = (ulong)Math.Pow(2, index);
 			return output;
 		}

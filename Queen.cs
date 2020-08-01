@@ -5,7 +5,7 @@ namespace ChessEngine
 	public class Queen : Piece
 	{
 
-        public Queen(Colour inColour, Square inSquare) : base(inColour, inSquare)
+        public Queen(Colour inColour) : base(inColour)
         {
 			Name = 'Q';
 			Value = 9;
