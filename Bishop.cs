@@ -13,5 +13,9 @@ namespace ChessEngine
 		{
 			throw new NotImplementedException();
 		}
+		public override ulong pieceBitboard()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

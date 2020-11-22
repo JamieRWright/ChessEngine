@@ -46,6 +46,11 @@ namespace ChessEngine
 			}
 			return output;			
         }
+
+		public override void Move(Square Square)
+		{
+			
+		}
 		private bool canDoublePush
 		{
 			get 
@@ -58,11 +63,11 @@ namespace ChessEngine
 			}
 		}
 
-		public static ulong PawnBitboard(Square inSquare)
+		public ulong PawnBitboard(Square inSquare)
 		{
 			int nextRank = inSquare.Rank + Direction;
 			ulong output = 0;
-			output = Square.makeBitboard(inSquare.File, nextRank);
+			output = Square.makeBitboard((char)inSquare.File, nextRank);
 			if (canDoublePush)
 			{
 				output = output + Square.makeBitboard(getFile, nextRank + 1);

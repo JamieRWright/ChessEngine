@@ -11,7 +11,11 @@ namespace ChessEngine
 			Value = 9;
 		}
 
-        public override void Move(Square Square, ref Board inBoard)
+		public override void Move(Square Square)
+		{
+			throw new NotImplementedException();
+		}
+		public override ulong pieceBitboard()
 		{
 			throw new NotImplementedException();
 		}

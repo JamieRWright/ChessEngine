@@ -23,8 +23,8 @@ namespace ChessEngine
         private void ChessBoard_Load(object sender, EventArgs e)
         {
             ulong bitboard = Piece.makeBitboard(new Square('H', 8));
-            
-            label1.Text = Piece.ulongToBinary(bitboard);
+            Rook rook = new Rook(Colour.Black, new Square('B', 2));
+            label1.Text = Piece.ulongToBinary(rook.pieceBitboard());
 
         }
         private void Board_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
@@ -35,7 +35,7 @@ namespace ChessEngine
             {
                 e.Graphics.FillRectangle(Brushes.White, e.CellBounds);
             }
-            Piece thisPiece = Board.getBoard[e.Column, e.Row].Piece;
+            Piece thisPiece = ChessEngine.Board.getBoard[e.Column, e.Row].Piece;
             if (thisPiece != default && thisPiece.Picture != default)
                 e.Graphics.DrawImage(thisPiece.Picture, e.CellBounds);
         }

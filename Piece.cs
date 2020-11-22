@@ -50,6 +50,7 @@ namespace ChessEngine
 				col = "B";
 			return string.Concat(col, Name);
 		}
+
 		public string FileName
 		{
 			get
@@ -77,7 +78,7 @@ namespace ChessEngine
 		}
 		public char getFile
 		{
-			get { return  _square.File; }
+			get { return  _square.File.ToString()[0]; }
 		}
 		public int getRank
 		{
@@ -111,13 +112,7 @@ namespace ChessEngine
 		{
 			Square square = null;
 			//makeBitboard();
-		}
-		public static ulong makeBitboard(Square inSquare)
-		{
-			ulong output = 0;
-			int index = (8 * (inSquare.Rank - 1)) + (int)inSquare.File;
-			output = (ulong)Math.Pow(2, index);
-			return output;
+			return 0;
 		}
 		public static string ulongToBinary(ulong value)
 		{
